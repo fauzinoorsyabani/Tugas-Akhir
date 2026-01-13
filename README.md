@@ -1,8 +1,8 @@
-# PDDikti Scraper 🎓
+# PDDikti Scraper
 
-Yoo! Ini script buat scraping data program studi dari website PDDikti (Pangkalan Data Pendidikan Tinggi). Basically ngambil semua data prodi dari PTN-BLU se-Indonesia.
+Ini script buat scraping data program studi dari website PDDikti (Pangkalan Data Pendidikan Tinggi). Basically ngambil semua data prodi dari PTN-BLU se-Indonesia.
 
-## What's This? 🤔
+## What's This?
 
 Script Python yang nge-scrape data program studi dari [pddikti.kemdiktisaintek.go.id](https://pddikti.kemdiktisaintek.go.id/perguruan-tinggi) using Selenium. Data yang diambil meliputi:
 
@@ -13,20 +13,20 @@ Script Python yang nge-scrape data program studi dari [pddikti.kemdiktisaintek.g
 - Jumlah Mahasiswa
 - Rasio Dosen/Mahasiswa
 
-## Target Universities 🏛️
+## Target Universities
 
 Script ini nge-scrape **53 PTN-BLU** yang dibagi jadi 3 zona:
 
-### 📍 Zona I (14 Universities)
+### Zona I (14 Universities)
 ISI Surakarta, Poltek Lampung, Poltek Pontianak, Poltek Sriwijaya, Unib, Unhalu, Unja, Unila, Unram, UNG, Undana, Untad, Untan, Untidar
 
-### 📍 Zona II (28 Universities) 
+### Zona II (28 Universities) 
 Data udah ada di file `Data_PTN_BLU_Zona_II_Final.xlsx` - bakal di-merge otomatis
 
-### 📍 Zona III (11 Universities)
+### Zona III (11 Universities)
 Polman Bandung, Poltek Bali, Poltek Bandung, Poltek Batam, PNJ, Unmul, Unima, UPN Veteran Jakarta, UPN Veteran Yogyakarta, Unsrat, Unud
 
-## Setup 🛠️
+## Setup
 
 ### Requirements
 ```bash
@@ -38,7 +38,7 @@ pip install pandas selenium webdriver-manager openpyxl
 - Chrome Browser (karena pake ChromeDriver)
 - Internet connection yang stabil
 
-## How to Use 🚀
+## How to Use
 
 1. **Clone or download** file `scrape_pddikti.py`
 
@@ -58,7 +58,7 @@ pip install pandas selenium webdriver-manager openpyxl
    - `Data_PTN_BLU_Gabungan_Final.xlsx` (hasil final gabungan semua zona)
    - `checkpoint_zona_1_3.xlsx` (auto-save progress biar ga ilang kalo crash)
 
-## Features ✨
+## Features
 
 - **Auto-checkpoint**: Progress ke-save otomatis per universitas (jaga-jaga kalo crash)
 - **Retry mechanism**: Kalau gagal search/klik, bakal retry sampe 3x
@@ -66,7 +66,7 @@ pip install pandas selenium webdriver-manager openpyxl
 - **Data merging**: Otomatis gabungin data lama (Zona II) sama data baru
 - **Error handling**: Handle stale elements, timeouts, dll
 
-## Output Format 📊
+## Output Format
 
 Excel file dengan kolom:
 
@@ -85,14 +85,14 @@ Excel file dengan kolom:
 | Jumlah Mahasiswa | Total mahasiswa aktif |
 | Rasio Dosen/Mhs | Rasio dosen terhadap mahasiswa |
 
-## Notes 📝
+## Notes
 
 - Script ini relatively **slow** karena harus wait buat loading page (anti-detection)
 - Kalau koneksi internet lo lemot, might need to increase sleep time
 - File Excel harus **ditutup** sebelum run script (biar ga permission error)
 - Progress di-save real-time, jadi aman kalo tiba-tiba mati listrik or something
 
-## Troubleshooting 🔧
+## Troubleshooting
 
 **"Permission Error" waktu save Excel?**
 - Tutup file Excel yang lagi kebuka
@@ -107,7 +107,7 @@ Excel file dengan kolom:
 - Update Chrome browser lo
 - Script pake webdriver-manager, jadi auto-update kok
 
-## Progress Tracking 📈
+## Progress Tracking
 
 Script bakal print progress real-time:
 ```
@@ -120,12 +120,12 @@ Script bakal print progress real-time:
    ✅ Selesai: Total 45 baris.
 ```
 
-## License & Disclaimer ⚖️
+## License & Disclaimer
 
 Data scraped dari website publik PDDikti Kemdikbudristek. Use responsibly, jangan spam website-nya!
 
 ---
 
-**Happy Scraping!** 🚀
+**Happy Scraping!**
 
 Kalau ada issue or mau improve script, feel free to contribute or reach out!
