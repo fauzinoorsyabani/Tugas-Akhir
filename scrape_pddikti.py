@@ -49,7 +49,8 @@ ZONA_3 = [
 ]
 
 # Gabungan Target Scrape Baru
-TARGET_UNIVERSITIES = ZONA_1 + ZONA_3
+# Gabungan Target Scrape Baru
+TARGET_UNIVERSITIES = ["Universitas Siliwangi"]
 
 def setup_driver():
     options = webdriver.ChromeOptions()
@@ -75,14 +76,58 @@ def scrape_university(driver, uni_name):
             print(f"   Sedang mencari {uni_name}...")
             time.sleep(4)
             
-            # Klik Detail
-            detail_btn = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Lihat Detail')]")))
-            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", detail_btn)
-            time.sleep(1)
-            detail_btn.click()
+            print(f"   Sedang mencari {uni_name}...")
+            time.sleep(4)
             
-            wait.until(EC.url_contains("detail-pt"))
-            break 
+            # Cari Card yang statusnya "Aktif"
+            # Kita cari element container yang mengandung text Nama Uni dan "Aktif"
+            try:
+                # XPath ini mencari elemen (div sembarang) yang punya text Universitas Siliwangi dan Aktif
+                # Lalu cari button Lihat Detail di dalamnya (atau adiknya)
+                # Strategi: Cari semua tombol "Lihat Detail", lalu cek parent/containernya apakah ada text "Aktif"
+                
+                # Tunggu hasil search muncul
+                wait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(., 'Lihat Detail')]")))
+                
+                # Cari spesifik yang Aktif
+                target_xpath = f"//div[contains(@class, 'card') or contains(@class, 'shadow')][contains(., '{uni_name}') and contains(., 'Aktif')]//button[contains(., 'Lihat Detail')]"
+                
+                # Coba cari dengan strict locator dulu
+                try:
+                    detail_btn = driver.find_element(By.XPATH, target_xpath)
+                    print("   ✅ Ditemukan Universitas dengan status AKTIF.")
+                except NoSuchElementException:
+                    # Fallback jika struktur class tidak sesuai, cari yang penting ada Text Uni dan Aktif di ancestor
+                    print("   ⚠️ Tidak ketemu strict match, mencoba search lebih luas...")
+                    # Cari semua tombol detail
+                    btns = driver.find_elements(By.XPATH, "//button[contains(., 'Lihat Detail')]")
+                    found = False
+                    for btn in btns:
+                        # Cek parent/grandparent
+                        # Ambil context sekitar tombol (misal 3 level ke atas)
+                        parent = btn.find_element(By.XPATH, "./../../..") 
+                        txt = parent.text
+                        if "Aktif" in txt and uni_name in txt:
+                            detail_btn = btn
+                            print("   ✅ Ditemukan via search loop (Status Aktif).")
+                            found = True
+                            break
+                    
+                    if not found:
+                        # Last Fallback: Ambil yang pertama
+                        print("   ⚠️ Tidak ditemukan ID 'Aktif' spesifik, mengambil hasil pertama.")
+                        detail_btn = btns[0]
+
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", detail_btn)
+                time.sleep(1)
+                detail_btn.click()
+                
+                wait.until(EC.url_contains("detail-pt"))
+                break 
+                
+            except Exception as e_select:
+                print(f"   ⚠️ Gagal memilih elemen: {e_select}")
+                raise e_select 
         except Exception as e:
             print(f"   ⚠️ Percobaan search ke-{retry+1} gagal: {str(e)[:100]}")
             time.sleep(2)
