@@ -18,22 +18,27 @@ Script Python yang nge-scrape data program studi dari [pddikti.kemdiktisaintek.g
 Script ini nge-scrape **53 PTN-BLU** yang dibagi jadi 3 zona:
 
 ### Zona I (14 Universities)
+
 ISI Surakarta, Poltek Lampung, Poltek Pontianak, Poltek Sriwijaya, Unib, Unhalu, Unja, Unila, Unram, UNG, Undana, Untad, Untan, Untidar
 
-### Zona II (28 Universities) 
+### Zona II (28 Universities)
+
 Data udah ada di file `Data_PTN_BLU_Zona_II_Final.xlsx` - bakal di-merge otomatis
 
 ### Zona III (11 Universities)
+
 Polman Bandung, Poltek Bali, Poltek Bandung, Poltek Batam, PNJ, Unmul, Unima, UPN Veteran Jakarta, UPN Veteran Yogyakarta, Unsrat, Unud
 
 ## Setup
 
 ### Requirements
+
 ```bash
 pip install pandas selenium webdriver-manager openpyxl
 ```
 
 ### Dependencies
+
 - Python 3.x
 - Chrome Browser (karena pake ChromeDriver)
 - Internet connection yang stabil
@@ -43,11 +48,13 @@ pip install pandas selenium webdriver-manager openpyxl
 1. **Clone or download** file `scrape_pddikti.py`
 
 2. **Pastikan ada file Zona II** (kalau mau merge):
+
    ```
    Data_PTN_BLU_Zona_II_Final.xlsx
    ```
 
 3. **Run the script**:
+
    ```bash
    python scrape_pddikti.py
    ```
@@ -70,20 +77,20 @@ pip install pandas selenium webdriver-manager openpyxl
 
 Excel file dengan kolom:
 
-| Column | Description |
-|--------|-------------|
-| Nama Universitas | Nama PT |
-| Kode | Kode Prodi |
-| Program Studi | Nama Prodi |
-| Status | Status Prodi |
-| Jenjang | D3/S1/S2/S3 |
-| Akreditasi | Akreditasi Prodi |
-| Dosen Penghitung Rasio | Jumlah dosen untuk rasio |
-| Dosen Tetap | Jumlah dosen tetap |
-| Dosen Tidak Tetap | Jumlah dosen tidak tetap |
-| Total Dosen | Total semua dosen |
-| Jumlah Mahasiswa | Total mahasiswa aktif |
-| Rasio Dosen/Mhs | Rasio dosen terhadap mahasiswa |
+| Column                 | Description                    |
+| ---------------------- | ------------------------------ |
+| Nama Universitas       | Nama PT                        |
+| Kode                   | Kode Prodi                     |
+| Program Studi          | Nama Prodi                     |
+| Status                 | Status Prodi                   |
+| Jenjang                | D3/S1/S2/S3                    |
+| Akreditasi             | Akreditasi Prodi               |
+| Dosen Penghitung Rasio | Jumlah dosen untuk rasio       |
+| Dosen Tetap            | Jumlah dosen tetap             |
+| Dosen Tidak Tetap      | Jumlah dosen tidak tetap       |
+| Total Dosen            | Total semua dosen              |
+| Jumlah Mahasiswa       | Total mahasiswa aktif          |
+| Rasio Dosen/Mhs        | Rasio dosen terhadap mahasiswa |
 
 ## Notes
 
@@ -95,21 +102,25 @@ Excel file dengan kolom:
 ## Troubleshooting
 
 **"Permission Error" waktu save Excel?**
+
 - Tutup file Excel yang lagi kebuka
 - Script bakal auto-save ke file BACKUP
 
 **Script stuck di loading?**
+
 - Check koneksi internet
 - Mungkin website PDDikti lagi down/slow
 - Increase wait time di code
 
 **ChromeDriver error?**
+
 - Update Chrome browser lo
 - Script pake webdriver-manager, jadi auto-update kok
 
 ## Progress Tracking
 
 Script bakal print progress real-time:
+
 ```
 [1/25] Processing...
 --- Memproses: Institut Seni Indonesia Surakarta ---

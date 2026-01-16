@@ -50,7 +50,7 @@ ZONA_3 = [
 
 # Gabungan Target Scrape Baru
 # Gabungan Target Scrape Baru
-TARGET_UNIVERSITIES = ["Universitas Siliwangi"]
+TARGET_UNIVERSITIES = ["Universitas Singaperbangsa Karawang"]
 
 def setup_driver():
     options = webdriver.ChromeOptions()
@@ -242,24 +242,38 @@ def main():
                 cleaned.append("")
             final_new_data.append(cleaned)
         df_new = pd.DataFrame(final_new_data, columns=columns)
-        print(f"✅ Data Baru (Zona I & III): {len(df_new)} baris.")
+        print(f"✅ Data Baru: {len(df_new)} baris.")
     else:
         df_new = pd.DataFrame(columns=columns)
         print("⚠️ Tidak ada data baru yang berhasil discrape.")
 
-    # 2. Load Data Lama (Zona 2)
-    old_file = "Data_PTN_BLU_Zona_II_Final.xlsx"
-    if os.path.exists(old_file):
+    # 2. Load Data Lama (Prioritas: Gabungan Final > Zona II)
+    gabungan_file = "Data_PTN_BLU_Gabungan_Final.xlsx"
+    zona_2_file = "Data_PTN_BLU_Zona_II_Final.xlsx"
+    
+    if os.path.exists(gabungan_file):
+        print(f"📂 Mendeteksi file gabungan exsisting: {gabungan_file}")
         try:
-            df_old = pd.read_excel(old_file)
-            # Pastikan kolom sesuai
-            df_old.columns = columns[:len(df_old.columns)] 
-            print(f"✅ Data Lama (Zona II) diload: {len(df_old)} baris.")
+            df_old = pd.read_excel(gabungan_file)
+            # Normalisasi kolom jika perlu
+            df_old = df_old[columns] if set(columns).issubset(df_old.columns) else df_old
+            print(f"✅ Data Existing diload: {len(df_old)} baris.")
         except Exception as e:
-            print(f"❌ Gagal load file lama: {e}")
-            df_old = pd.DataFrame(columns=columns)
+            print(f"❌ Gagal load file gabungan, mencoba backup data Zona II: {e}")
+            if os.path.exists(zona_2_file):
+                df_old = pd.read_excel(zona_2_file)
+            else:
+                df_old = pd.DataFrame(columns=columns)
+    elif os.path.exists(zona_2_file):
+        print(f"📂 Menggunakan basis data Zona II: {zona_2_file}")
+        try:
+            df_old = pd.read_excel(zona_2_file)
+            df_old.columns = columns[:len(df_old.columns)] 
+            print(f"✅ Data Zona II diload: {len(df_old)} baris.")
+        except Exception as e:
+             df_old = pd.DataFrame(columns=columns)
     else:
-        print(f"⚠️ File {old_file} tidak ditemukan. Hasil hanya akan berisi data baru.")
+        print("⚠️ Tidak ada file data sebelumnya. Membuat baru.")
         df_old = pd.DataFrame(columns=columns)
 
     # 3. Gabung
