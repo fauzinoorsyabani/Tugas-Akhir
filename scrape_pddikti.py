@@ -5,7 +5,7 @@ import csv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 from webdriver_manager.chrome import ChromeDriverManager
@@ -223,96 +223,149 @@ def scrape_university_metadata(driver, uni_name):
     ]
     return row, kode_pt, status_pt, akreditasi
 
-def scrape_prodi_data(driver, uni_name, kode_pt, status_pt, akreditasi_pt):
-    print(f"   [Prodi] Scrape dengan Pagination (1-Akhir)...")
-    wait = WebDriverWait(driver, 10)
-    
-    # 1. Scroll to Program Studi section
+def _get_fresh_selects(driver, wait, timeout=10):
+    """Ambil ulang selects untuk menghindari stale element."""
     try:
-        header = driver.find_element(By.XPATH, "//*[contains(text(), 'Program Studi')]")
-        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", header)
-        time.sleep(1)
+        wait.until(EC.presence_of_element_located((By.TAG_NAME, "select")))
+        time.sleep(0.5)
+        return driver.find_elements(By.TAG_NAME, "select")
     except:
-        print("     ⚠️ Tidak menemukan section Program Studi")
         return []
 
-    # 2. ITERASI HALAMAN (PAGIANTION LOOP)
-    all_rows_data = []
-    page_num = 1
-    
-    while True:
-        # Scrape current page rows
+
+def select_option_with_retry(driver, wait, select_index, identifier, by_value=False, retries=3):
+    """Pilih opsi select dengan retry untuk menghindari stale element."""
+    for attempt in range(retries):
         try:
-            # Wait for table rows to be present
-            wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "tbody tr")))
-            rows = driver.find_elements(By.CSS_SELECTOR, "tbody tr")
-            
-            # Extract data from visible rows
-            page_count = 0
-            for r in rows:
-                cols = r.find_elements(By.TAG_NAME, "td")
-                if len(cols) >= 5:
-                    txts = [c.text.strip() for c in cols]
-                    
-                    # Handling "No" column
-                    offset = 0
-                    if len(txts[0]) <= 3 and txts[0].isdigit():
-                        offset = 1
-                        
+            selects = _get_fresh_selects(driver, wait)
+            if len(selects) > select_index:
+                sel = Select(selects[select_index])
+                if by_value:
+                    sel.select_by_value(identifier)
+                else:
+                    sel.select_by_visible_text(identifier)
+                return True
+        except StaleElementReferenceException:
+            print(f"       ⚠️ Stale element pada select, retry {attempt+1}/{retries}...")
+            time.sleep(1)
+        except Exception as e:
+            print(f"       ⚠️ Gagal pilih opsi '{identifier}' (attempt {attempt+1}): {e}")
+            time.sleep(1)
+    return False
+
+
+def scrape_prodi_data(driver, uni_name, kode_pt, status_pt, akreditasi_pt):
+    print(f"   [Prodi] Scrape dengan Periode & Tampilkan Semua...")
+    wait = WebDriverWait(driver, 15)
+
+    # 1. Scroll to Program Studi section
+    try:
+        # Wait for table to appear first
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "tbody tr")))
+        header = driver.find_element(By.XPATH, "//*[contains(text(), 'Program Studi')]")
+        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", header)
+        time.sleep(2)
+    except:
+        print("     ⚠️ Tidak menemukan section Program Studi / tabel belum muncul")
+        return []
+
+    # SET TAMPILKAN TO "semua" (select index 0)
+    ok = select_option_with_retry(driver, wait, 0, "semua", by_value=True)
+    if ok:
+        time.sleep(3)  # tunggu tabel di-reload
+    else:
+        print("     ⚠️ Gagal memilih 'semua', lanjut dengan default.")
+
+    TARGET_PERIODS = ["Ganjil 2025", "Genap 2024", "Ganjil 2024", "Genap 2023", "Ganjil 2023"]
+    all_rows_data = []
+
+    for period in TARGET_PERIODS:
+        print(f"     >> Scraping Periode: {period}")
+
+        # Pilih periode (select index 1)
+        ok = select_option_with_retry(driver, wait, 1, period, by_value=False)
+        if not ok:
+            print(f"     ⚠️ Skip periode {period} (tidak tersedia / gagal dipilih).")
+            continue
+        time.sleep(4)  # tunggu tabel di-reload setelah ganti periode
+
+        page_num = 1
+        period_count = 0
+
+        while True:
+            # Scrape current page rows
+            try:
+                wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "tbody tr")))
+                rows = driver.find_elements(By.CSS_SELECTOR, "tbody tr")
+
+                # Cek jika tidak ada data
+                if len(rows) <= 1:
+                    first_cols = rows[0].find_elements(By.TAG_NAME, "td") if rows else []
+                    if len(first_cols) < 5:
+                        print(f"       -> Tidak ada data untuk {period}.")
+                        break
+
+                page_count = 0
+                for r in rows:
                     try:
-                        k_prodi = txts[0 + offset]
-                        n_prodi = txts[1 + offset]
-                        s_prodi = txts[2 + offset]
-                        jenjang = txts[3 + offset]
-                        akr_prodi = txts[4 + offset]
-                        
-                        d_r = txts[5 + offset]
-                        d_t = txts[6 + offset]
-                        d_tt = txts[7 + offset]
-                        d_tot = txts[8 + offset]
-                        mhs = txts[9 + offset]
-                        rasio = txts[10 + offset]
-                        
-                        # Add Univ Metadata (Status, Akreditasi) here
+                        cols = r.find_elements(By.TAG_NAME, "td")
+                        if len(cols) < 5:
+                            continue
+                        txts = [c.text.strip() for c in cols]
+
+                        # Handling "No" column
+                        offset = 1 if (len(txts[0]) <= 3 and txts[0].isdigit()) else 0
+
+                        k_prodi  = txts[0 + offset]
+                        n_prodi  = txts[1 + offset]
+                        s_prodi  = txts[2 + offset]
+                        jenjang  = txts[3 + offset]
+                        akr_prodi= txts[4 + offset]
+                        d_r      = txts[5 + offset]
+                        d_t      = txts[6 + offset]
+                        d_tt     = txts[7 + offset]
+                        d_tot    = txts[8 + offset]
+                        mhs      = txts[9 + offset]
+                        rasio    = txts[10 + offset]
+
                         row_data = [
-                            uni_name, kode_pt, status_pt, akreditasi_pt, "Ganjil 2025",
+                            uni_name, kode_pt, status_pt, akreditasi_pt, period,
                             k_prodi, n_prodi, s_prodi, jenjang, akr_prodi,
                             d_r, d_t, d_tt, d_tot, mhs, rasio
                         ]
                         all_rows_data.append(row_data)
                         page_count += 1
-                    except IndexError:
+                    except (IndexError, StaleElementReferenceException):
                         pass
-            
-            print(f"     -> Halaman {page_num}: {page_count} prodi.")
-            
-        except Exception as e:
-            print(f"     ⚠️ Eror scrape halaman {page_num}: {e}")
 
-        # CHECK NEXT BUTTON
-        has_next = False
-        try:
-            next_btn = driver.find_element(By.XPATH, "//button[./*[name()='svg']][last()]")
-            
-            if next_btn.is_enabled() and "disabled" not in next_btn.get_attribute("class"):
-                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", next_btn)
-                time.sleep(0.5)
-                next_btn.click()
-                time.sleep(2)
-                page_num += 1
-                has_next = True
-            else:
+                period_count += page_count
+                print(f"       -> Halaman {page_num}: {page_count} prodi.")
+
+            except Exception as e:
+                print(f"       ⚠️ Eror scrape halaman {page_num}: {e}")
+
+            # CHECK NEXT BUTTON
+            has_next = False
+            try:
+                next_btn = driver.find_element(By.XPATH, "//button[./*[name()='svg']][last()]")
+                is_disabled = ("disabled" in (next_btn.get_attribute("class") or ""))
+                if next_btn.is_enabled() and not is_disabled:
+                    driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", next_btn)
+                    time.sleep(0.5)
+                    next_btn.click()
+                    time.sleep(2)
+                    page_num += 1
+                    has_next = True
+            except NoSuchElementException:
                 pass
-                
-        except NoSuchElementException:
-             pass
-        except Exception as e:
-            print(f"     ⚠️ Eror klik Next: {e}")
-        
-        if not has_next:
-            break
-            
-    print(f"     ✅ Total: {len(all_rows_data)} prodi dari {page_num} halaman.")
+            except Exception as e:
+                print(f"       ⚠️ Eror klik Next: {e}")
+
+            if not has_next:
+                break
+
+        print(f"     ✅ Total {period_count} prodi untuk {period}.")
+
     return all_rows_data
 
 def process_uni(driver, uni_name):
@@ -374,6 +427,29 @@ def process_uni(driver, uni_name):
         
     except Exception as e:
         print(f"❌ ERROR {uni_name}: {e}")
+        # Lanjut ke universitas berikutnya, jangan crash total
+        try:
+            driver.get("about:blank")
+            time.sleep(1)
+        except:
+            pass
+
+def get_scraped_universities():
+    """Ambil daftar universitas yang sudah ada di file CSV (untuk resume)."""
+    if not os.path.exists(FILE_PRODI):
+        return set()
+    try:
+        scraped = set()
+        with open(FILE_PRODI, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)  # skip header
+            for row in reader:
+                if row:
+                    scraped.add(row[0])  # nama_universitas di kolom pertama
+        return scraped
+    except:
+        return set()
+
 
 def main():
     setup_files()
@@ -382,9 +458,17 @@ def main():
     
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     
-    print("=== START SCRAPE (PAGINATION + METADATA FIXED) ===")
+    # Cek universitas yang sudah di-scrape (fitur RESUME)
+    already_scraped = get_scraped_universities()
+    if already_scraped:
+        print(f"=== RESUME MODE: {len(already_scraped)} universitas sudah di-scrape, akan dilanjutkan ===")
+    
+    print("=== START SCRAPE (MULTI-PERIODE + RESUME) ===")
     try:
         for i, uni in enumerate(TARGET_UNIVERSITIES, 1):
+            if uni in already_scraped:
+                print(f"\n[{i}/{len(TARGET_UNIVERSITIES)}] SKIP (sudah ada): {uni}")
+                continue
             print(f"\n[{i}/{len(TARGET_UNIVERSITIES)}] {uni}")
             process_uni(driver, uni)
     finally:
