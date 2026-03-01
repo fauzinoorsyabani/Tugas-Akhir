@@ -63,7 +63,7 @@ I.1 Latar Belakang
      Dalam konteks pengelolaan organisasi modern, keterbatasan penyajian data statis mendorong perlunya pendekatan analitik yang mampu mengolah data mentah menjadi informasi yang bermakna dan relevan bagi pengambilan keputusan (Stewart & Dewan, 2022)
      Business Intelligence merupakan pendekatan yang mengintegrasikan proses pengumpulan, pengolahan, analisis, dan visualisasi data untuk menghasilkan informasi yang terstruktur dan mudah dipahami sebagai dasar pengambilan keputusan berbasis data (Sharma & Joshi, 2022).
      Penerapan Business Intelligence dalam pendidikan tinggi telah banyak digunakan untuk mendukung pengambilan keputusan strategis melalui pemantauan indikator institusional seperti jumlah mahasiswa, jumlah dosen, dan rasio dosen terhadap mahasiswa (Gaftandzhieva dkk., 2023).
-     Rasio dosen terhadap mahasiswa merupakan salah satu indikator penting dalam menilai kapasitas akademik perguruan tinggi karena mencerminkan keseimbangan antara beban layanan pendidikan dan ketersediaan sumber daya dosen, sebagaimana dibahas oleh Shah dan Burke dalam “An Examination of Student–Staff Ratios in Higher Education”.
+     Rasio dosen terhadap mahasiswa merupakan salah satu indikator penting dalam menilai kapasitas akademik perguruan tinggi karena mencerminkan keseimbangan antara beban layanan pendidikan dan ketersediaan sumber daya dosen, sebagaimana dibahas oleh Shah dan Burke dalam ï¿½An Examination of Studentï¿½Staff Ratios in Higher Educationï¿½.
      Namun demikian, pemanfaatan data nasional pendidikan tinggi memiliki keterbatasan karena data usia dosen, masa pensiun, dan proyeksi ketersediaan dosen tidak disediakan secara terbuka, sehingga analisis kebijakan penambahan dosen tidak dapat dilakukan secara akurat berdasarkan data yang tersedia (Murti & Mulyani, 2022).
      Oleh karena itu, analisis kapasitas akademik berbasis data agregat lebih relevan diarahkan pada pemahaman keseimbangan antara jumlah mahasiswa dan jumlah dosen sebagai dasar pengelolaan kapasitas institusi tanpa merumuskan kebijakan struktural di luar cakupan data (Zhang & Goyal, 2024).
      Berdasarkan permasalahan tersebut, penelitian ini memanfaatkan data agregat institusi Universitas Siliwangi sebagai Perguruan Tinggi Negeri berstatus Badan Layanan Umum (PTN BLU) dengan pendekatan Business Intelligence berbasis data PDDikti untuk menyajikan informasi kapasitas akademik secara terstruktur sebagai pendukung pengambilan keputusan berbasis data (Stewart & Dewan, 2022).
@@ -116,7 +116,325 @@ II.1.5 Decision Support System (DSS)
 II.2 Penelitian Terkait dan Kebaruan
      Penelitian terkait dalam studi ini digunakan untuk memetakan posisi penelitian yang akan dilakukan serta mengidentifikasi perbedaan dan kontribusi penelitian. Penelitian-penelitian sebelumnya umumnya membahas penerapan Business Intelligence dan dashboard analitik di lingkungan pendidikan tinggi dengan fokus pada sistem tertentu, program studi, atau unit kerja tertentu.
 Tabel 2. 1 Penelitian Terkait
-NoKontenPenjelasan1.Penulis & TahunSharma & Joshi (2022)Judul PenelitianPooling Business Intelligence and Dashboard Technology for Decision Making in Higher Education InstitutionsObjek PenelitianPerguruan tinggiPermasalahanData akademik dan institusional di perguruan tinggi belum dimanfaatkan secara optimal untuk mendukung pengambilan keputusan strategis karena masih tersebar dan tidak terintegrasi.Metode PenelitianBusiness Intelligence dan dashboard analitikFokus PenelitianPemanfaatan Business Intelligence dan dashboard untuk pengambilan keputusan berbasis data.Temuan UtamaIntegrasi Business Intelligence dengan dashboard analitik membantu pimpinan perguruan tinggi memahami kondisi institusi secara lebih komprehensif.2.Penulis & TahunStewart & Dewan (2022)Judul PenelitianA Systemic Mapping Study of Business Intelligence Maturity Models for Higher Education InstitutionsObjek PenelitianInstitusi pendidikan tinggiPermasalahanBelum adanya gambaran menyeluruh mengenai tingkat kematangan penerapan Business Intelligence di pendidikan tinggi.Metode PenelitianSystematic Mapping StudyFokus PenelitianModel dan tingkat kematangan Business Intelligence.Temuan UtamaPenerapan Business Intelligence di pendidikan tinggi berkembang secara bertahap dan berperan penting dalam pengambilan keputusan institusional.3.Penulis & TahunMurti & Mulyani (2022)Judul PenelitianThe Determinant of Business Intelligence Systems Quality on Indonesian Higher Education Information CenterObjek PenelitianPusat data pendidikan tinggi IndonesiaPermasalahanKualitas sistem Business Intelligence pada pusat data pendidikan tinggi nasional belum optimal dalam mendukung pemanfaatan data.Metode PenelitianAnalisis kualitas sistem Business IntelligenceFokus PenelitianKualitas sistem Business Intelligence pendidikan tinggi.Temuan UtamaKualitas sistem Business Intelligence berpengaruh terhadap efektivitas pemanfaatan data pendidikan tinggi sebagai dasar pengambilan keputusan.4.Penulis & TahunAstuti, Wibowo, & Herdiyanti (2024)Judul PenelitianTowards the National Higher Education Database in Indonesia: Challenges to Data Governance Implementation from the Perspective of a Public UniversityObjek PenelitianPerguruan tinggi negeri di IndonesiaPermasalahanPemanfaatan data pendidikan tinggi nasional menghadapi tantangan integrasi dan tata kelola data di tingkat institusi.Metode PenelitianAnalisis data pendidikan tinggi nasional dan tata kelola data.Fokus PenelitianPengelolaan dan pemanfaatan data pendidikan tinggi nasional.Temuan UtamaData pendidikan tinggi nasional memiliki potensi besar untuk analisis institusional, namun memerlukan tata kelola data yang kuat.5.Penulis & TahunGaftandzhieva, Hussain, Hilcenko, Doneva, & Boykova (2023)Judul PenelitianData-Driven Decision Making in Higher Education Institutions: State-of-PlayObjek PenelitianInstitusi pendidikan tinggiPermasalahanPengambilan keputusan di perguruan tinggi masih belum sepenuhnya berbasis pemanfaatan data institusional.Metode PenelitianStudi pemetaan dan analisis data-driven decision makingFokus PenelitianPengambilan keputusan berbasis data di pendidikan tinggi.Temuan UtamaPendekatan data-driven decision making meningkatkan kualitas dan objektivitas keputusan manajerial.6.Penulis & TahunZhang & Goyal (2024)Judul PenelitianAI-Driven Decision Support System Innovations to Empower Higher Education AdministrationObjek PenelitianAdministrasi pendidikan tinggiPermasalahanSistem pendukung keputusan di pendidikan tinggi belum memanfaatkan data institusional secara terintegrasi.Metode PenelitianDecision Support System berbasis dataFokus PenelitianSistem pendukung keputusan untuk administrasi pendidikan tinggi.Temuan UtamaSistem pendukung keputusan berbasis data meningkatkan efektivitas pengambilan keputusan administrasi pendidikan tinggi.7.Penulis & TahunSequeira, Reis, Branco, & Alves (2025)Judul PenelitianFrom Roadmap to Ecosystem: A Comprehensive Framework for Implementing Business Intelligence in Higher Education InstitutionsObjek PenelitianPerguruan tinggiPermasalahanImplementasi Business Intelligence di perguruan tinggi masih bersifat parsial dan belum terintegrasi secara menyeluruh.Metode PenelitianFramework Business IntelligenceFokus PenelitianPengembangan ekosistem Business Intelligence di pendidikan tinggi.Temuan UtamaBusiness Intelligence perlu diterapkan sebagai ekosistem institusional untuk mendukung pengambilan keputusan strategis.8.Penulis & TahunRahim, Wardani, Alam Jusia, & Siswanto (2025)Judul PenelitianImplementasi dan Pengembangan Dashboard Akademik Feeder PDDikti dengan Data MartObjek PenelitianUniversitasPermasalahanData Feeder PDDikti belum disajikan secara optimal untuk mendukung analisis akademik.Metode PenelitianBusiness Intelligence dan Data MartFokus PenelitianPengembangan dashboard akademik berbasis PDDikti.Temuan UtamaDashboard akademik meningkatkan pemahaman pengguna terhadap data akademik internal universitas.9.Penulis & TahunSanthi, Monica Sari, Putra, Mahendra, & Ariasih (2021)Judul PenelitianImplementasi Business Intelligence Menggunakan Tableau untuk Visualisasi Prediksi Kelulusan MahasiswaObjek PenelitianPerguruan tinggiPermasalahanKesulitan dalam menyajikan dan menganalisis data akademik mahasiswa secara informatif.Metode PenelitianBusiness IntelligenceFokus PenelitianVisualisasi data akademik.Temuan UtamaVisualisasi Business Intelligence mempermudah interpretasi data akademik dalam pengambilan keputusan.10.Penulis & TahunMellyka, Islamiyah, & Widagdo (2025)Judul PenelitianPenerapan Business Intelligence dalam Dashboard Data Alumni Universitas MulawarmanObjek PenelitianUniversitasPermasalahanData alumni belum dimanfaatkan secara optimal untuk analisis institusional.Metode PenelitianBusiness IntelligenceFokus PenelitianDashboard data alumni.Temuan UtamaDashboard Business Intelligence mendukung analisis data alumni secara lebih terstruktur.11.Penulis & TahunCardoso & Su (2022)Judul PenelitianDesigning a Business Intelligence and Analytics Maturity Model for Higher Education: A Design Science ApproachObjek PenelitianPerguruan tinggiPermasalahanBelum adanya model kematangan Business Intelligence yang terstruktur di pendidikan tinggi.Metode PenelitianDesign Science ResearchFokus PenelitianModel kematangan Business Intelligence.Temuan UtamaModel kematangan BI membantu institusi merencanakan dan mengevaluasi penerapan BI.12.Penulis & TahunWijaya, dkk. (2023)Judul PenelitianDesigning a Business Intelligence and Analytics Maturity Model for Higher EducationObjek PenelitianPerguruan tinggiPermasalahanKetidaksiapan institusi pendidikan tinggi dalam penerapan Business Intelligence secara berkelanjutan.Metode PenelitianDesign ScienceFokus PenelitianKematangan Business Intelligence dan analitik.Temuan UtamaModel BI dan analitik mendukung pengambilan keputusan institusional berbasis data.13.Penulis & TahunSantoso, dkk. (2022)Judul PenelitianHigher Education Management Based on Intelligent SystemsObjek PenelitianPerguruan tinggiPermasalahanManajemen pendidikan tinggi masih belum optimal dalam memanfaatkan sistem berbasis data.Metode PenelitianIntelligent SystemFokus PenelitianManajemen pendidikan tinggi berbasis sistem cerdas.Temuan UtamaManajemen pendidikan tinggi berbasis sistem cerdas.14.Penulis & TahunSari, dkk. (2022)Judul PenelitianPooling Business Intelligence and Dashboard Technology for Educational Decision MakingObjek PenelitianPerguruan tinggiPermasalahanPengambilan keputusan pendidikan masih belum sepenuhnya berbasis data.Metode PenelitianBusiness Intelligence dan DashboardFokus PenelitianPengambilan keputusan pendidikan.Temuan UtamaPemanfaatan Business Intelligence meningkatkan kualitas keputusan pendidikan.15.Penulis & TahunPratama, dkk. (2023)Judul PenelitianData-Driven Decision Making in Higher Education InstitutionsObjek PenelitianPerguruan tinggiPermasalahanPemanfaatan data institusional dalam pengambilan keputusan masih terbatas.Metode PenelitianData analyticsFokus PenelitianPengambilan keputusan berbasis data.Temuan UtamaPendekatan data-driven decision making meningkatkan efektivitas pengambilan keputusan institusional.
+No
+Konten
+Penjelasan
+1.
+Penulis & Tahun
+Sharma & Joshi (2022)
+
+Judul Penelitian
+Pooling Business Intelligence and Dashboard Technology for Decision Making in Higher Education Institutions
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Data akademik dan institusional di perguruan tinggi belum dimanfaatkan secara optimal untuk mendukung pengambilan keputusan strategis karena masih tersebar dan tidak terintegrasi.
+
+Metode Penelitian
+Business Intelligence dan dashboard analitik
+
+Fokus Penelitian
+Pemanfaatan Business Intelligence dan dashboard untuk pengambilan keputusan berbasis data.
+
+Temuan Utama
+Integrasi Business Intelligence dengan dashboard analitik membantu pimpinan perguruan tinggi memahami kondisi institusi secara lebih komprehensif.
+2.
+Penulis & Tahun
+Stewart & Dewan (2022)
+
+Judul Penelitian
+A Systemic Mapping Study of Business Intelligence Maturity Models for Higher Education Institutions
+
+Objek Penelitian
+Institusi pendidikan tinggi
+
+Permasalahan
+Belum adanya gambaran menyeluruh mengenai tingkat kematangan penerapan Business Intelligence di pendidikan tinggi.
+
+Metode Penelitian
+Systematic Mapping Study
+
+Fokus Penelitian
+Model dan tingkat kematangan Business Intelligence.
+
+Temuan Utama
+Penerapan Business Intelligence di pendidikan tinggi berkembang secara bertahap dan berperan penting dalam pengambilan keputusan institusional.
+3.
+Penulis & Tahun
+Murti & Mulyani (2022)
+
+Judul Penelitian
+The Determinant of Business Intelligence Systems Quality on Indonesian Higher Education Information Center
+
+Objek Penelitian
+Pusat data pendidikan tinggi Indonesia
+
+Permasalahan
+Kualitas sistem Business Intelligence pada pusat data pendidikan tinggi nasional belum optimal dalam mendukung pemanfaatan data.
+
+Metode Penelitian
+Analisis kualitas sistem Business Intelligence
+
+Fokus Penelitian
+Kualitas sistem Business Intelligence pendidikan tinggi.
+
+Temuan Utama
+Kualitas sistem Business Intelligence berpengaruh terhadap efektivitas pemanfaatan data pendidikan tinggi sebagai dasar pengambilan keputusan.
+4.
+Penulis & Tahun
+Astuti, Wibowo, & Herdiyanti (2024)
+
+Judul Penelitian
+Towards the National Higher Education Database in Indonesia: Challenges to Data Governance Implementation from the Perspective of a Public University
+
+Objek Penelitian
+Perguruan tinggi negeri di Indonesia
+
+Permasalahan
+Pemanfaatan data pendidikan tinggi nasional menghadapi tantangan integrasi dan tata kelola data di tingkat institusi.
+
+Metode Penelitian
+Analisis data pendidikan tinggi nasional dan tata kelola data.
+
+Fokus Penelitian
+Pengelolaan dan pemanfaatan data pendidikan tinggi nasional.
+
+Temuan Utama
+Data pendidikan tinggi nasional memiliki potensi besar untuk analisis institusional, namun memerlukan tata kelola data yang kuat.
+5.
+Penulis & Tahun
+Gaftandzhieva, Hussain, Hilcenko, Doneva, & Boykova (2023)
+
+Judul Penelitian
+Data-Driven Decision Making in Higher Education Institutions: State-of-Play
+
+Objek Penelitian
+Institusi pendidikan tinggi
+
+Permasalahan
+Pengambilan keputusan di perguruan tinggi masih belum sepenuhnya berbasis pemanfaatan data institusional.
+
+Metode Penelitian
+Studi pemetaan dan analisis data-driven decision making
+
+Fokus Penelitian
+Pengambilan keputusan berbasis data di pendidikan tinggi.
+
+Temuan Utama
+Pendekatan data-driven decision making meningkatkan kualitas dan objektivitas keputusan manajerial.
+6.
+Penulis & Tahun
+Zhang & Goyal (2024)
+
+Judul Penelitian
+AI-Driven Decision Support System Innovations to Empower Higher Education Administration
+
+Objek Penelitian
+Administrasi pendidikan tinggi
+
+Permasalahan
+Sistem pendukung keputusan di pendidikan tinggi belum memanfaatkan data institusional secara terintegrasi.
+
+Metode Penelitian
+Decision Support System berbasis data
+
+Fokus Penelitian
+Sistem pendukung keputusan untuk administrasi pendidikan tinggi.
+
+Temuan Utama
+Sistem pendukung keputusan berbasis data meningkatkan efektivitas pengambilan keputusan administrasi pendidikan tinggi.
+7.
+Penulis & Tahun
+Sequeira, Reis, Branco, & Alves (2025)
+
+Judul Penelitian
+From Roadmap to Ecosystem: A Comprehensive Framework for Implementing Business Intelligence in Higher Education Institutions
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Implementasi Business Intelligence di perguruan tinggi masih bersifat parsial dan belum terintegrasi secara menyeluruh.
+
+Metode Penelitian
+Framework Business Intelligence
+
+Fokus Penelitian
+Pengembangan ekosistem Business Intelligence di pendidikan tinggi.
+
+Temuan Utama
+Business Intelligence perlu diterapkan sebagai ekosistem institusional untuk mendukung pengambilan keputusan strategis.
+8.
+Penulis & Tahun
+Rahim, Wardani, Alam Jusia, & Siswanto (2025)
+
+Judul Penelitian
+Implementasi dan Pengembangan Dashboard Akademik Feeder PDDikti dengan Data Mart
+
+Objek Penelitian
+Universitas
+
+Permasalahan
+Data Feeder PDDikti belum disajikan secara optimal untuk mendukung analisis akademik.
+
+Metode Penelitian
+Business Intelligence dan Data Mart
+
+Fokus Penelitian
+Pengembangan dashboard akademik berbasis PDDikti.
+
+Temuan Utama
+Dashboard akademik meningkatkan pemahaman pengguna terhadap data akademik internal universitas.
+9.
+Penulis & Tahun
+Santhi, Monica Sari, Putra, Mahendra, & Ariasih (2021)
+
+Judul Penelitian
+Implementasi Business Intelligence Menggunakan Tableau untuk Visualisasi Prediksi Kelulusan Mahasiswa
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Kesulitan dalam menyajikan dan menganalisis data akademik mahasiswa secara informatif.
+
+Metode Penelitian
+Business Intelligence
+
+Fokus Penelitian
+Visualisasi data akademik.
+
+Temuan Utama
+Visualisasi Business Intelligence mempermudah interpretasi data akademik dalam pengambilan keputusan.
+10.
+Penulis & Tahun
+Mellyka, Islamiyah, & Widagdo (2025)
+
+Judul Penelitian
+Penerapan Business Intelligence dalam Dashboard Data Alumni Universitas Mulawarman
+
+Objek Penelitian
+Universitas
+
+Permasalahan
+Data alumni belum dimanfaatkan secara optimal untuk analisis institusional.
+
+Metode Penelitian
+Business Intelligence
+
+Fokus Penelitian
+Dashboard data alumni.
+
+Temuan Utama
+Dashboard Business Intelligence mendukung analisis data alumni secara lebih terstruktur.
+11.
+Penulis & Tahun
+Cardoso & Su (2022)
+
+Judul Penelitian
+Designing a Business Intelligence and Analytics Maturity Model for Higher Education: A Design Science Approach
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Belum adanya model kematangan Business Intelligence yang terstruktur di pendidikan tinggi.
+
+Metode Penelitian
+Design Science Research
+
+Fokus Penelitian
+Model kematangan Business Intelligence.
+
+Temuan Utama
+Model kematangan BI membantu institusi merencanakan dan mengevaluasi penerapan BI.
+12.
+Penulis & Tahun
+Wijaya, dkk. (2023)
+
+Judul Penelitian
+Designing a Business Intelligence and Analytics Maturity Model for Higher Education
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Ketidaksiapan institusi pendidikan tinggi dalam penerapan Business Intelligence secara berkelanjutan.
+
+Metode Penelitian
+Design Science
+
+Fokus Penelitian
+Kematangan Business Intelligence dan analitik.
+
+Temuan Utama
+Model BI dan analitik mendukung pengambilan keputusan institusional berbasis data.
+13.
+Penulis & Tahun
+Santoso, dkk. (2022)
+
+Judul Penelitian
+Higher Education Management Based on Intelligent Systems
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Manajemen pendidikan tinggi masih belum optimal dalam memanfaatkan sistem berbasis data.
+
+Metode Penelitian
+Intelligent System
+
+Fokus Penelitian
+Manajemen pendidikan tinggi berbasis sistem cerdas.
+
+Temuan Utama
+Manajemen pendidikan tinggi berbasis sistem cerdas.
+14.
+Penulis & Tahun
+Sari, dkk. (2022)
+
+Judul Penelitian
+Pooling Business Intelligence and Dashboard Technology for Educational Decision Making
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Pengambilan keputusan pendidikan masih belum sepenuhnya berbasis data.
+
+Metode Penelitian
+Business Intelligence dan Dashboard
+
+Fokus Penelitian
+Pengambilan keputusan pendidikan.
+
+Temuan Utama
+Pemanfaatan Business Intelligence meningkatkan kualitas keputusan pendidikan.
+15.
+Penulis & Tahun
+Pratama, dkk. (2023)
+
+Judul Penelitian
+Data-Driven Decision Making in Higher Education Institutions
+
+Objek Penelitian
+Perguruan tinggi
+
+Permasalahan
+Pemanfaatan data institusional dalam pengambilan keputusan masih terbatas.
+
+Metode Penelitian
+Data analytics
+
+Fokus Penelitian
+Pengambilan keputusan berbasis data.
+
+Temuan Utama
+Pendekatan data-driven decision making meningkatkan efektivitas pengambilan keputusan institusional.
+
 III. 
       Berdasarkan Tabel 2.1, penelitian terdahulu menunjukkan bahwa penerapan Business Intelligence di pendidikan tinggi umumnya difokuskan pada pengembangan dashboard akademik, analisis unit tertentu, atau pemodelan kematangan Business Intelligence. Sebagian penelitian memanfaatkan data institusional internal, sementara pemanfaatan data nasional pendidikan tinggi masih terbatas dan belum diarahkan pada analisis kapasitas akademik institusi secara spesifik.
       Penelitian ini memiliki perbedaan dengan penelitian sebelumnya karena memanfaatkan data agregat nasional PDDikti dan menerapkan pendekatan Business Intelligence pada tingkat institusi PTN BLU, khususnya Universitas Siliwangi, untuk menganalisis kapasitas akademik melalui indikator jumlah mahasiswa, jumlah dosen, dan rasio dosen terhadap mahasiswa. Dengan demikian, penelitian ini memberikan kontribusi pada analisis kapasitas akademik berbasis data nasional sebagai pendukung pengambilan keputusan berbasis data di lingkungan perguruan tinggi negeri.
@@ -158,14 +476,14 @@ Gambar 3. 1 Alur Penelitian
 
 
  DAFTAR PUSTAKA
-Astuti, H. M., Wibowo, R. P., & Herdiyanti, A. (2024). Towards the National Higher Education Database in Indonesia: Challenges to Data Governance Implementation from The Perspective of a Public University. Procedia Computer Science, 234, 1322–1331. https://doi.org/10.1016/j.procs.2024.03.130
+Astuti, H. M., Wibowo, R. P., & Herdiyanti, A. (2024). Towards the National Higher Education Database in Indonesia: Challenges to Data Governance Implementation from The Perspective of a Public University. Procedia Computer Science, 234, 1322ï¿½1331. https://doi.org/10.1016/j.procs.2024.03.130
 Gaftandzhieva, S., Hussain, S., Hilcenko, S., Doneva, R., & Boykova, K. (2023). Data-driven Decision Making in Higher Education Institutions: State-of-play. International Journal of Advanced Computer Science and Applications, 14(6). https://doi.org/10.14569/IJACSA.2023.0140642
-Murti, G. T., & Mulyani, S. (2022). The determinant of Business Intelligence systems quality on Indonesian higher education information center. Linguistics and Culture Review, 6, 581–595. https://doi.org/10.21744/lingcure.v6nS1.2104
-Rahim, A., Wardani, M., Alam Jusia, P., & Siswanto, A. (2025). Implementasi Dan Pengembangan Dashboard Akademik Feeder PDDikti Dengan Data Mart: Studi Kasus Universitas Dinamika Bangsa. Jurnal Informatika Dan Rekayasa Komputer(JAKAKOM), 5(1), 1336–1345. https://doi.org/10.33998/jakakom.2025.5.1.2184
-Sharma, H. S., & Joshi, H. D. (2022). POOLING BUSINESS INTELLIGENCE AND DASHBOARD TECHNOLOGY FOR DECISIONS MAKING IN HIGHER EDUCATION INSTITUTIONS. Towards Excellence, 36–48. https://doi.org/10.37867/TE140306
+Murti, G. T., & Mulyani, S. (2022). The determinant of Business Intelligence systems quality on Indonesian higher education information center. Linguistics and Culture Review, 6, 581ï¿½595. https://doi.org/10.21744/lingcure.v6nS1.2104
+Rahim, A., Wardani, M., Alam Jusia, P., & Siswanto, A. (2025). Implementasi Dan Pengembangan Dashboard Akademik Feeder PDDikti Dengan Data Mart: Studi Kasus Universitas Dinamika Bangsa. Jurnal Informatika Dan Rekayasa Komputer(JAKAKOM), 5(1), 1336ï¿½1345. https://doi.org/10.33998/jakakom.2025.5.1.2184
+Sharma, H. S., & Joshi, H. D. (2022). POOLING BUSINESS INTELLIGENCE AND DASHBOARD TECHNOLOGY FOR DECISIONS MAKING IN HIGHER EDUCATION INSTITUTIONS. Towards Excellence, 36ï¿½48. https://doi.org/10.37867/TE140306
 Stewart, C. L., & Dewan, M. A. A. (2022). A Systemic Mapping Study of Business Intelligence Maturity Models for Higher Education Institutions. Computers, 11(11), 153. https://doi.org/10.3390/computers11110153
-Zhang, J., & Goyal, S. B. (2024). AI-Driven Decision Support System Innovations to Empower Higher Education Administration. Journal of Computers, Mechanical and Management, 3(2), 35–41. https://doi.org/10.57159/gadl.jcmm.3.2.24070
- 
+Zhang, J., & Goyal, S. B. (2024). AI-Driven Decision Support System Innovations to Empower Higher Education Administration. Journal of Computers, Mechanical and Management, 3(2), 35ï¿½41. https://doi.org/10.57159/gadl.jcmm.3.2.24070
+ï¿½
 
 
 
