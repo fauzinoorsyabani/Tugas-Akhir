@@ -9,3 +9,10 @@ Scraper/checkpoint_*.xlsx
 Scraper/driver/chromedriver.exe
 Scraper/driver/geckodriver.exe
 
+.venv/
+__pycache__/
+*.pyc
+
+CLAUDE.md
+Revisi Dosen.md
+revisi_bab3.md
