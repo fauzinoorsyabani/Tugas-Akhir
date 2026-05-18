@@ -1,3 +1,11 @@
-__pycache__/
-*.pyc
-checkpoint_*.xlsx
+Raw_Data/
+Final_Data/
+Scripts/Data_Processing/
+Scraper/venv/
+Scraper/__pycache__/
+Scraper/*.pyc
+Scraper/checkpoint_*.xlsx
+
+Scraper/driver/chromedriver.exe
+Scraper/driver/geckodriver.exe
+
