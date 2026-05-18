@@ -13,6 +13,6 @@ Scraper/driver/geckodriver.exe
 __pycache__/
 *.pyc
 
-CLAUDE.md
-Revisi Dosen.md
+.CLAUDE.md
+.Revisi Dosen.md
 revisi_bab3.md
