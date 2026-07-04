@@ -1,41 +1,41 @@
-id_prodi,nama_program_studi,jenjang,status_prodi,akreditasi_prodi
-54201,Agribisnis,S1,Aktif,Baik Sekali
-54101,Agribisnis,S2,Aktif,Baik Sekali
-54211,Agroteknologi,S1,Aktif,Baik Sekali
-54111,Agroteknologi,S2,Aktif,Baik
-62201,Akuntansi,S1,Aktif,Baik Sekali
-60201,Ekonomi Pembangunan,S1,Aktif,Baik Sekali
-60202,Ekonomi Syari'ah,S1,Aktif,B
-13211,Gizi,S1,Aktif,Baik Sekali
-61001,Ilmu Manajemen,S3,Aktif,Baik
-54001,Ilmu Pertanian,S3,Aktif,Terakreditasi Sementara
-67201,Ilmu Politik,S1,Aktif,B
-55201,Informatika,S1,Aktif,Baik Sekali
-13201,Kesehatan Masyarakat,S1,Aktif,Baik Sekali
-61201,Manajemen,S1,Aktif,Baik Sekali
-61101,Manajemen,S2,Aktif,Baik Sekali
-80206,Manajemen Mutu Halal,S1,Aktif,Terakreditasi Sementara
-86009,Pendidikan,S3,Aktif,Baik
-88201,Pendidikan Bahasa Indonesia,S1,Aktif,Unggul
-88203,Pendidikan Bahasa Inggris,S1,Aktif,Unggul
-84205,Pendidikan Biologi,S1,Aktif,Unggul
-87203,Pendidikan Ekonomi,S1,Aktif,Unggul
-84203,Pendidikan Fisika,S1,Aktif,Unggul
-87102,Pendidikan Geografi,S2,Aktif,Baik Sekali
-87202,Pendidikan Geografi,S1,Aktif,Unggul
-84101,Pendidikan Ilmu Pengetahuan Alam,S2,Aktif,Baik
-85103,Pendidikan Jasmani,S2,Aktif,Baik
-85201,Pendidikan Jasmani,S1,Aktif,Unggul
-95102,Pendidikan Kependudukan & Lingkungan Hidup,S2,Alih Bentuk,-
-86205,Pendidikan Masyarakat,S1,Aktif,Unggul
-84202,Pendidikan Matematika,S1,Aktif,Unggul
-84102,Pendidikan Matematika,S2,Aktif,Baik Sekali
-86904,Pendidikan Profesi Guru,Profesi,Aktif,Baik Sekali
-87201,Pendidikan Sejarah,S1,Aktif,Unggul
-61406,Perbankan dan Keuangan,D3,Aktif,B
-61318,Perbankan dan Keuangan Digital,D4,Aktif,Baik
-49202,Sains Data,S1,Aktif,-
-57201,Sistem Informasi,S1,Aktif,Baik Sekali
-20201,Teknik Elektro,S1,Aktif,Baik Sekali
-22201,Teknik Sipil,S1,Aktif,Baik
-41223,Teknologi Pangan dan Hasil Pertanian,S1,Aktif,-
+id_prodi,nama_program_studi,fakultas,rumpun_ilmu,jenjang,status_prodi,akreditasi_prodi
+54201,Agribisnis,Faperta,Sains,S1,Aktif,Baik Sekali
+54101,Agribisnis,Faperta,Sains,S2,Aktif,Baik Sekali
+54211,Agroteknologi,Faperta,Sains,S1,Aktif,Baik Sekali
+54111,Agroteknologi,Faperta,Sains,S2,Aktif,Baik
+62201,Akuntansi,FEB,Sosial,S1,Aktif,Baik Sekali
+60201,Ekonomi Pembangunan,FEB,Sosial,S1,Aktif,Baik Sekali
+60202,Ekonomi Syari'ah,FEB,Sosial,S1,Aktif,B
+13211,Gizi,FIK,Sains,S1,Aktif,Baik Sekali
+61001,Ilmu Manajemen,FEB,Sosial,S3,Aktif,Baik
+54001,Ilmu Pertanian,Faperta,Sains,S3,Aktif,Terakreditasi Sementara
+67201,Ilmu Politik,FISIP,Sosial,S1,Aktif,B
+55201,Informatika,FT,Sains,S1,Aktif,Baik Sekali
+13201,Kesehatan Masyarakat,FIK,Sains,S1,Aktif,Baik Sekali
+61201,Manajemen,FEB,Sosial,S1,Aktif,Baik Sekali
+61101,Manajemen,FEB,Sosial,S2,Aktif,Baik Sekali
+80206,Manajemen Mutu Halal,FEB,Sosial,S1,Aktif,Terakreditasi Sementara
+86009,Pendidikan,FKIP,Sosial,S3,Aktif,Baik
+88201,Pendidikan Bahasa Indonesia,FKIP,Sosial,S1,Aktif,Unggul
+88203,Pendidikan Bahasa Inggris,FKIP,Sosial,S1,Aktif,Unggul
+84205,Pendidikan Biologi,FKIP,Sains,S1,Aktif,Unggul
+87203,Pendidikan Ekonomi,FKIP,Sosial,S1,Aktif,Unggul
+84203,Pendidikan Fisika,FKIP,Sains,S1,Aktif,Unggul
+87102,Pendidikan Geografi,FKIP,Sosial,S2,Aktif,Baik Sekali
+87202,Pendidikan Geografi,FKIP,Sosial,S1,Aktif,Unggul
+84101,Pendidikan Ilmu Pengetahuan Alam,FKIP,Sains,S2,Aktif,Baik
+85103,Pendidikan Jasmani,FKIP,Sosial,S2,Aktif,Baik
+85201,Pendidikan Jasmani,FKIP,Sosial,S1,Aktif,Unggul
+95102,Pendidikan Kependudukan & Lingkungan Hidup,FKIP,Sosial,S2,Alih Bentuk,-
+86205,Pendidikan Masyarakat,FKIP,Sosial,S1,Aktif,Unggul
+84202,Pendidikan Matematika,FKIP,Sains,S1,Aktif,Unggul
+84102,Pendidikan Matematika,FKIP,Sains,S2,Aktif,Baik Sekali
+86904,Pendidikan Profesi Guru,FKIP,Sosial,Profesi,Aktif,Baik Sekali
+87201,Pendidikan Sejarah,FKIP,Sosial,S1,Aktif,Unggul
+61406,Perbankan dan Keuangan,FEB,Sosial,D3,Aktif,B
+61318,Perbankan dan Keuangan Digital,FEB,Sosial,D4,Aktif,Baik
+49202,Sains Data,FT,Sains,S1,Aktif,-
+57201,Sistem Informasi,FT,Sains,S1,Aktif,Baik Sekali
+20201,Teknik Elektro,FT,Sains,S1,Aktif,Baik Sekali
+22201,Teknik Sipil,FT,Sains,S1,Aktif,Baik
+41223,Teknologi Pangan dan Hasil Pertanian,Faperta,Sains,S1,Aktif,-

@@ -1,0 +1,27 @@
+BAB I
+PENDAHULUAN
+1.1	Latar Belakang
+Perguruan tinggi menghasilkan data akademik dalam jumlah besar yang seharusnya dimanfaatkan untuk mendukung pengambilan keputusan strategis berbasis data (Zhang & Goyal, 2024). Dalam konteks Perguruan Tinggi Negeri berstatus Badan Layanan Umum (PTN BLU) seperti Universitas Siliwangi, pengelolaan kapasitas akademik memiliki implikasi langsung terhadap efektivitas layanan pendidikan, akuntabilitas kinerja, serta perencanaan sumber daya institusi. 
+Ketidakseimbangan antara jumlah mahasiswa dan jumlah dosen berpotensi memengaruhi kualitas pembelajaran dan beban akademik (Astuti dkk., 2024). Oleh karena itu, diperlukan mekanisme analisis berbasis data yang mampu memberikan gambaran kondisi institusi secara objektif dan terukur (Chigbu & Makapela, 2025). Informasi mengenai distribusi rasio dosen terhadap mahasiswa ini sangat penting untuk mengevaluasi keseimbangan kapasitas institusi agar tetap sesuai dengan standar mutu pendidikan (Gaftandzhieva dkk., 2023). 
+Pangkalan Data Pendidikan Tinggi (PDDIKTI) sebenarnya telah menyediakan data agregat nasional tersebut. Namun, permasalahan utamanya adalah penyajian data masih bersifat statis dan deskriptif dalam bentuk tabel atau laporan standar (Astuti dkk., 2024). Kondisi ini menyebabkan data tersebut belum mendukung analisis komprehensif, evaluasi tren longitudinal, maupun perbandingan kapasitas institusional secara cepat. 
+Di sisi lain, penelitian terkait pendekatan Business Intelligence di perguruan tinggi umumnya masih berfokus pada level mikro. Mayoritas riset hanya menyoroti lingkup program studi, unit kerja, atau pembuatan dashboard dengan basis data lokal (MZ dkk., 2022). Pendekatan tersebut menghasilkan informasi parsial dan belum memberikan gambaran menyeluruh mengenai kapasitas institusional secara objektif. Selain itu, pemanfaatan data agregat nasional PDDIKTI untuk evaluasi PTN BLU melalui analitik terstruktur masih sangat terbatas. 
+Berdasarkan permasalahan penyajian data yang statis tersebut, penelitian ini memanfaatkan data agregat PDDIKTI untuk menganalisis kapasitas akademik Universitas Siliwangi melalui pendekatan Business Intelligence. Sistem dibangun berbasis data warehouse dan dashboard analitik guna menyajikan tren kapasitas secara longitudinal. Dashboard ini difungsikan sebagai instrumen untuk mendukung Decision Support System (DSS) dalam menyajikan informasi yang terstruktur bagi pimpinan institusi (Sharma & Joshi, 2022). 
+1.2	Rumusan Masalah
+Berdasarkan latar belakang masalah yang telah diuraikan, maka rumusan masalah dalam penelitian ini adalah sebagai berikut:
+1.	Bagaimana kondisi kapasitas akademik Universitas Siliwangi sebagai Perguruan Tinggi Negeri Badan Layanan Umum (PTN BLU) berdasarkan tren rasio dosen terhadap mahasiswa per program studi menggunakan data agregat PDDikti secara longitudinal?
+2.	Bagaimana sistem Business Intelligence berbasis data warehouse dan dashboard analitik dapat mengatasi permasalahan penyajian data yang masih bersifat statis dan deskriptif, serta mendukung Decision Support System (DSS) secara terstruktur?
+1.3	Tujuan Penelitian
+Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah:
+1.	Menganalisis kondisi kapasitas akademik Universitas Siliwangi sebagai Perguruan Tinggi Negeri Badan Layanan Umum (PTN BLU) berdasarkan tren rasio dosen terhadap mahasiswa per program studi menggunakan data agregat PDDikti secara longitudinal.
+2.	Mengembangkan sistem Business Intelligence berbasis data warehouse dan dashboard analitik untuk mengatasi kendala penyajian data yang bersifat statis dan deskriptif, serta berfungsi sebagai pendukung Decision Support System (DSS) secara terstruktur.
+1.4	Batasan Masalah
+Agar penelitian ini lebih fokus dan terarah, maka ditetapkan batasan masalah sebagai berikut:
+1.	Objek penelitian difokuskan pada Universitas Siliwangi sebagai Perguruan Tinggi Negeri berstatus Badan Layanan Umum (PTN BLU) dengan menggunakan sumber data agregat dari Pangkalan Data Pendidikan Tinggi (PDDikti). 
+2.	Variabel data yang dianalisis dibatasi pada tingkat institusi dan program studi, meliputi jumlah mahasiswa aktif dan jumlah dosen tetap untuk menghasilkan perhitungan rasio, tanpa membandingkannya dengan perguruan tinggi lain. 
+3.	Analisis difokuskan pada pengolahan data agregat, perhitungan rasio, dan analisis tren longitudinal selama periode tiga tahun terakhir, yang disajikan dalam bentuk dashboard Business Intelligence.
+4.	Penelitian ini berfokus pada visualisasi informasi untuk mendukung Decision Support System (DSS), sehingga tidak mencakup analisis prediktif, tidak menggunakan data rinci personal (seperti usia atau masa pensiun), serta tidak mengevaluasi kinerja individu dosen maupun mahasiswa.
+1.5	Manfaat Penelitian
+Penelitian ini diharapkan dapat memberikan manfaat sebagai berikut:
+1.	Memberikan kontribusi bagi pengembangan literatur Sistem Informasi terkait implementasi Business Intelligence, khususnya dalam mentransformasi data agregat pendidikan tinggi berskala nasional menjadi informasi analitik yang dinamis.
+2.	Menyediakan dashboard analitik otomatis yang berfungsi sebagai Decision Support System (DSS) bagi pimpinan Universitas Siliwangi untuk memantau tren keseimbangan kapasitas akademik dan mengambil keputusan strategis yang berbasis data.
+3.	Meningkatkan efisiensi operasional institusi dengan menggantikan proses audit dan rekapitulasi rasio dosen terhadap mahasiswa yang sebelumnya bersifat manual menjadi penyajian visual yang terpusat dan real-time.

@@ -1,0 +1,184 @@
+JUDUL NASKAH PUBLIKASI MAKSIMUM 1
+8
+ KATA DALAM BAHASA INDONESIA (WAJIB HURUF CAPITAL)
+Penulis Pertama
+1*
+, Penulis Kedua
+2
+, Penulis Ketiga
+3
+1,2
+Institusi/afiliasi; alamat; telp/Fax institusi/afiliasi
+3
+Institusi/afiliasi; alamat; telp/Fax institusi/afiliasi
+Keywords: 
+3-5 keyword; 
+Algorithm a; 
+B algorithms; 
+Complexity.
+Corespondent Email:
+xxxxxxxxxx@
+kampus.ac.id
+Copyright © 2026 The Author(s), Published by Jurnal Informatika dan Teknik Elektro Terapan. This is an open-access article distributed under the terms of the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+Abstrak. 
+Abstrak Maksimal 200 kata berbahasa Indonesia dicetak miring dengan 
+Times New Roman 10 point
+. Abstrak harus jelas, deskriptif dan harus memberikan gambaran singkat masalah yang diteliti. Abstrak meliputi alasan pemilihan topik atau pentingnya topik penelitian, metode penelitian dan ringkasan hasil. Abstrak harus diakhiri dengan komentar tentang pentingnya hasil atau kesimpulan singkat. 
+Abstract.
+ 
+A maximum of 200 words abstracts in English in italics with 
+Times New Roman 10 points
+. The abstract should be clear, descriptive and should provide a brief overview of the problem studied. Abstract topics include reasons for selecting or the importance of research topics, research methods, and a summary of the results. The abstract should end with a comment about the significance of the results or conclusions brief.
+PENDAHULUAN 
+Dokumen ini adalah 
+template
+ dalam versi 
+word
+ (.
+docx
+) yang dapat digunakan sebagai acuan untuk menulis manuscript anda. (
+This document is a template for the Word (.doc) version. If you can use this version of the document as a reference for writing your manuscript.
+)
+Pendahuluan menjelaskan 
+state of the art
+ penelitian, analisis kesenjangan, dan tujuan/pertanyaan penelitian. 
+State of the art
+ penelitian meliputi latar belakang penelitian, penelitian sebelumnya, referensi, dan teori yang berkaitan dengan penelitian tersebut. 
+Gap analysis
+ merupakan pernyataan tentang mengapa penelitian itu perlu dilakukan dan kebaruan (keunikan) penelitian tersebut. 
+Tujuan penelitian
+/pertanyaan menyatakan masalah penelitian yang akan dipecahkan dalam naskah. Bagian ini harus memiliki proporsi naskah 15-20%.
+ (
+The 
+introduction
+ explains 
+state of the art
+ of the research, 
+gap analysis
+, and 
+research objectives/questions
+. The state of the art of the research includes research background, previous research, references, and theory related to the research. The gap analysis is the statement about why the research is needed to be conducted and the novelty (uniqueness) of the research. The research objective/questions state the research problem that will be solved in the manuscript. 
+This part should have 15-20% proportion of the manuscript
+.
+)
+TINJAUAN PUSTAKA
+Isi bagian tinjauan pustaka ditulis ringkas, dan hanya teori yang benar-benar digunakan sebagai dasar penelitian. (
+The contents of the literature review section are written briefly, and only theory is actually used as a basis for research.
+)
+METODE PENELITIAN 
+Makalah hendaknya memuat tulisan yang berisi 
+1. Pendahuluan, 2. Tinjauan Pustaka, 2. Metode Penelitian (bisa meliputi analisa, arsitektur, metode yang dipakai untuk menyelesaikan masalah, implementasi), 3. Hasil dan Pembahasan, 4. Kesimpulan.
+ Pada setiap paragraph bisa terdiri dari beberapa 
+sub-paragraph
+ yang dituliskan dengan penomoran angka arab seperti yang ditunjukkan 
+section
+ berikut ini. Jumlah halaman 
+minimum 
+4
+ halaman dan maksimum 
+14 halaman
+ ukuran A4. (
+Papers should contain writing that contains
+ 1. Introduction, 2. Literature Review, 2. Research Methods (may include analysis, architecture, methods used to solve problems, implementation), 3. Results and discussion, 4. Conclusions. 
+Each paragraph can consist of several sub-paragraphs which are written with Arabic numerals as shown in the following section. The minimum number of pages is 10 pages and a maximum of 25 A4 size pages.
+)
+Metode ditulis secara lengkap dan detail sehingga dapat diulang oleh orang lain (
+reproducible
+). Metode yang bersifat umum tidak boleh ditulis secara rinci. Bagian ini berisi rancangan penelitian, teknik pengumpulan data, sumber atau partisipan data, dan teknik analisis data. Bagian ini harus memiliki proporsi naskah 10-15%. (
+The 
+method
+ is written in 
+full and detail so that it can be repeated by others (reproducible)
+. The common methods should not be written in detail. This part contains research design, data collecting 
+technique(s), data sources or participants, and data analysis technique(s). 
+This part should have 10-15% proportion of the manuscript
+.
+)
+Tahapan Review (Review Steps)
+Harap mengumpulkan naskah anda dalam bentuk 
+soft copy
+ dalam bentuk file .docx untuk di 
+review
+ secara elektronik
+.
+Gambar dan tabel. (Figures and tables)
+Semua 
+Tabel
+ dan 
+Gambar
+ yang anda masukkan dalam dokumen harus 
+jelas terbaca.
+Rumus Matematika. (Math formula.)
+Jika anda menggunakan 
+Word
+, gunakan persamaan Microsoft Equation Editor atau 
+MathType
+, ditulis ditengah, dan diberi nomor persamaan mulai dari (1), (2) dst. (
+If you use Word, use the Microsoft Equation Editor or MathType equation, centered, and numbered equations starting from (1), (2) etc.
+)
+p(x,y) ;(0≤x≤M-1.0≤y≤N-1)
+(1)
+Pengacuan Pustaka. (Reference Library.)
+Penulis harus mengutip publikasi dalam teks yang mengikuti gaya kutipan 
+IEEE
+. Di akhir artikel: 
+HASIL DAN PEMBAHASAN 
+Hasil dan Diskusi menyusun 60-70% dari naskah. Bagian ini adalah bagian utama dari artikel penelitian. Hasil harus meringkas atau menyoroti temuan daripada memberikan hasil dan analisis rinci. Berisi hasil yang diambil dari analisis data dan/atau hasil uji hipotesis dan hanya menyediakan data yang mendukung pembahasan. Bagian ini meliputi tabel dan grafik yang diambil dari analisis data hasil penelitian. (
+Results and Discussion compose 60-70% of the manuscript.
+ This part is the main part of the research article. 
+Results
+ should 
+summarize or highlight the findings
+ rather than providing the detailed results and analysis. It contains the results taken from the data analysis and/or the hypothesis test results and only provide the data that support discussion. This part includes table(s) and graph(s) taken from the research results data analysis.
+)
+Diskusi memainkan peran penting dalam sebuah artikel ilmiah. Bagian ini menjawab permasalahan, menginterpretasikan hasil penelitian dan temuan menjadi pengetahuan yang telah diketahui, menegaskan dan/atau kontras dengan penelitian-peneliti lain, mengkonstruksi teori baru, dan/atau memodifikasi teori sebelumnya. Pembahasan juga harus memuat implikasi hasil teoritis dan implementasi. (
+Discussion
+ plays the important part in a scientific article. This part 
+answers the problems
+, 
+interprets the research results and the findings into the already known knowledge
+, 
+confirms and/or contrasts with the research of other researchers
+, 
+constructs the new theory
+, and/or 
+modifies the previous theory
+. Discussion must also contain 
+the implications of both theoretical and implementation results
+.
+)
+Hasil dan Diskusi harus menjawab pertanyaan apa, mengapa dan apa lagi. Temuan penelitian harus dinyatakan secara eksplisit. Setelah mengemukakan temuan penelitian, temuan penelitian dan teori atau hipotesis yang relevan harus dibahas secara komprehensif. Bagian pembahasan juga harus menjelaskan perbandingan temuan penelitian dengan hasil yang relevan. Oleh karena itu, kutipan penting harus ditemukan di bagian diskusi. Pada bagian terakhir, implikasi dari temuan penelitian yang berkaitan dengan keilmuan harus diungkapkan dengan jelas. (
+Results and Discussion must answer what, why and what else questions. The research findings must be stated explicitly. After stating the research findings, the research findings and the relevant theory or hypothesis must be discussed comprehensively. The discussion section must explain the comparison of the research finding with the relevant results as well. Therefore, a notable citation must be found in the discussion section. In the last part, the implication of the research finding related to sciences should be stated clearly.
+)
+KESIMPULAN 
+Kesimpulan harus mengindikasi secara jelas hasil-hasil yang diperoleh, kelebihan dan kekurangannya, serta kemungkinan pengembangan selanjutnya. (
+The conclusion should clearly indicate the results obtained, the advantages and disadvantages, and the possibility of further development.
+)
+Kesimpulan dapat berupa paragraf, namun sebaiknya berbentuk poin-poin dengan menggunakan 
+numbering
+ atau 
+bullet
+. (
+The conclusion can be in the form of a paragraph, but it should be in bullet points using numbering or bullets.
+)
+UCAPAN TERIMA KASIH 
+Penulis mengucapkan terima kasih kepada pihak-pihak terkait yang telah memberi dukungan terhadap penelitian ini.
+DAFTAR PUSTAKA 
+[1] A. Rezi and M. Allam, "Techniques in array processing by means of transformations, " in Control and Dynamic Systems, Vol. 69, Multidimensional Systems, C. T. Leondes, Ed. San Diego: Academic Press, 1995, pp. 133-180.
+[2] W.K. Chen, Linear Networks and Systems. Belmont, CA: Wadsworth, 1993, pp. 123-135
+[3] T. J. van Weert and R. K. Munro, Eds., Informatics and the Digital Society: Social, ethical and cognitive issues: IFIP TC3/WG3.1&3.2 Open Conf.e on Social, Ethical and Cognitive Issues of Informatics and ICT, July 22-26, 2002, Dortmund, Germany. Boston: Kluwer Academic, 2003.
+[4] L. Bass, P. Clements, and R. Kazman, Software Architecture in Practice, 2nd ed. Reading, MA: Addison Wesley, 2003. [Online] Available: Safari e-book.
+[5] M. W. Dixon, "Application of neural networks to solve the routing problem in communication networks," Ph.D. dissertation, Murdoch Univ., Murdoch, WA, Australia, 1999.
+[6] 
+D. Duei Putri, G. F. Nama, and W. E. Sulistiono, “Analisis Sentimen Kinerja Dewan Perwakilan Rakyat (DPR) Pada Twitter Menggunakan Metode Naive Bayes Classifier”, 
+JITET
+, vol. 10, no. 1, Jan. 2022.
+Artikel anda harus menggunakan minimal 
+15 REFERENSI
+ 
+terbaru.
+Artikel anda harus mensitasi minimal 
+1 ARTIKEL
+ 
+yang sudah terbit pada jurnal JITET.
+Format Sitasi adalah IEEE (penomoran [1] [2] [3] dst…)

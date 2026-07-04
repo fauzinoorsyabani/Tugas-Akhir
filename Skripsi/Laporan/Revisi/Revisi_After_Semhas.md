@@ -1,0 +1,2 @@
+1. Alasan pemilihan star schema 2. Pembahasan dikaitkan dengan penelitian terdahulu 3. Validasi data sebelum ETL dan sesudah ETL, validasi data antar semester ganjil dan genap pada tahun ajaran yang sama 4. Perbaikan penyusunan laporan skripsi 5. Pada dashboard bisa ditambahkan menu analisis per fakultas atau per rumpun ilmu. 6. Pembahasan rasio dosen antara prodi sains dan prodi sosial. DIbahas dalam pembahasan. 7. Keterbatasan penelitian dan saran penelitian berikutnya.
+
