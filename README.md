@@ -26,7 +26,7 @@ graph TD
     %% ETL & DW Phase
     subgraph B[2. ETL & Dimensional Modeling]
         A2 -->|Extract| B1[Python Pandas ETL Pipeline]
-        B1 -->|Transform: Clean, Parse, Calculate Ratios| B1
+        B1 -->|Transform: Clean, Add Fakultas & Rumpun Ilmu, Parse Ratios| B1
         B1 -->|Load| B2[(Star Schema Data Warehouse)]
         B2 -->|Dimension Table| D1[Dim_Waktu]
         B2 -->|Dimension Table| D2[Dim_Universitas]
@@ -53,16 +53,15 @@ graph TD
 This research is structured around the **6-Phase BI Roadmap** by Moss & Atre (2003), ensuring that each technical step has direct academic justification, regulatory alignment, and institutional utility.
 
 ### 1. Justification Phase
-* **Context**: Higher education quality is highly dependent on institutional capacity. Indonesian Ministry of Education (DIKTI) regulations enforce strict standards for the **Lecturer-to-Student Ratio** (e.g., maximum **1:45** for social sciences). Exceeding this threshold jeopardizes program accreditation (*akreditasi prodi*), student learning quality, and institutional ratings.
+* **Context**: Higher education quality is highly dependent on institutional capacity. **Permendikbud No. 3 Tahun 2020** enforces strict standards for the **Lecturer-to-Student Ratio**:
+  * **1:30** maximum for Science/Technology (Saintek) programs.
+  * **1:45** maximum for Social/Humanities (Soshum) programs.
 * **Problem**: Currently, academic capacity data is presented statically, making longitudinal trend analysis difficult and blocking proactive compliance monitoring.
-* **Objective**: Build a Business Intelligence Decision Support System (DSS) to monitor lecturer-student ratios across reporting semesters, profiling and highlighting compliant vs. non-compliant study programs.
+* **Objective**: Build a Business Intelligence Decision Support System (DSS) to monitor lecturer-student ratios across reporting semesters, profiling compliant vs. non-compliant study programs based on their respective scientific disciplines.
 
 ### 2. Planning Phase
 * **Data Sources**: Public data scraped from the official [PDDikti Portal](https://pddikti.kemdiktisaintek.go.id/).
-* **Scope**: Longitudinal data spanning **5 semesters** (from *Ganjil 2023* to *Ganjil 2025*) across **53 PTN-BLU** universities, classified into 3 operational zones:
-  * **Zona I** (14 Universities): Scraped dynamically (e.g., ISI Surakarta, Unila, Unram, Untan).
-  * **Zona II** (28 Universities): Merged automatically from pre-scraped, verified datasets (`Data_PTN_BLU_Zona_II_Final.xlsx`).
-  * **Zona III** (11 Universities): Scraped dynamically (e.g., Poltek Bandung, UPN Veteran Jakarta, Unud).
+* **Scope**: Longitudinal data spanning **5 semesters** (from *Ganjil 2023* to *Ganjil 2025*) across **53 PTN-BLU** universities, classified into 3 operational zones.
 
 ### 3. Business Analysis Phase
 The system measures core academic capacity indicators. The primary metric is the **Academic Capacity Ratio**:
@@ -72,100 +71,24 @@ $$\text{Capacity Ratio} = \frac{\text{Jumlah Mahasiswa Aktif}}{\text{Jumlah Dose
 * **Key Analytical Metrics**:
   * **Jumlah Mahasiswa Aktif** (Active Students Count)
   * **Jumlah Dosen Penghitung Rasio** (Calculation-Eligible Lecturers)
-  * **Dosen Tetap** (Permanent Lecturers)
-  * **Dosen Tidak Tetap** (Non-Permanent Lecturers)
-  * **Total Dosen** (Total Faculty Members)
-  * **Rasio Dosen/Mahasiswa** (Formatted ratio string, e.g., `1:35`)
-  * **Nilai Rasio** (Calculated float value of the ratio denominator, e.g., `35.0` for analysis)
+  * **Fakultas & Rumpun Ilmu** (Faculty and Discipline: Sains/Sosial) for dynamic filtering.
 
 ### 4. Design Phase (Dimensional Modeling)
-To support multi-dimensional analysis, the system's Data Warehouse uses a **Star Schema** design, separating factual numeric transactions from descriptive dimensions.
-
-```mermaid
-classDiagram
-    class Dim_Waktu {
-        +int id_waktu (PK)
-        +string tahun_pelaporan
-        +string semester
-        +int tahun
-    }
-
-    class Dim_Universitas {
-        +string id_universitas (PK)
-        +string nama_universitas
-        +string kota
-        +string provinsi
-        +string status_pt
-        +string akreditasi_institusi
-    }
-
-    class Dim_Prodi {
-        +string id_prodi (PK)
-        +string nama_program_studi
-        +string jenjang
-        +string status_prodi
-        +string akreditasi_prodi
-    }
-
-    class Fact_Kapasitas_Pendidikan {
-        +string id_universitas (FK)
-        +string id_prodi (FK)
-        +int id_waktu (FK)
-        +int jumlah_dosen_penghitung_rasio
-        +int dosen_tetap
-        +int dosen_tidak_tetap
-        +int total_dosen
-        +int jumlah_mahasiswa
-        +string rasio_dosen_mahasiswa
-        +float nilai_rasio
-    }
-
-    Fact_Kapasitas_Pendidikan --> Dim_Waktu : id_waktu
-    Fact_Kapasitas_Pendidikan --> Dim_Universitas : id_universitas
-    Fact_Kapasitas_Pendidikan --> Dim_Prodi : id_prodi
-```
-
-* **Fact Table Grain**: Study Program (*Program Studi*) level per reporting semester.
-* **Why Star Schema?** It optimizes query execution speeds, simplifies dashboard integration, and ensures data integrity.
+To support multi-dimensional analysis, the system's Data Warehouse uses a **Star Schema** design, separating factual numeric transactions from descriptive dimensions. It optimizes query execution speeds, simplifies Looker Studio integration, and ensures data integrity.
 
 ### 5. Construction Phase (ETL & Visualizations)
 The construction phase is automated via a robust Python ETL pipeline:
-1. **Extract**: Reads raw scraped CSVs for Universities and Study Programs.
+1. **Extract**: Reads raw scraped CSVs.
 2. **Transform**:
-   * Standardizes university names and metadata.
-   * Clears missing values in critical columns (`kode_prodi`, `rasio_dosen_mahasiswa`).
-   * Splits the semester strings (e.g., `Ganjil 2023` $\rightarrow$ Semester: `Ganjil`, Year: `2023`).
+   * Clears missing values.
    * Parses string ratios (e.g., `1:42.5` $\rightarrow$ float `42.5`).
-   * Validates institutional metadata for Universitas Siliwangi (`kode_pt`: `002008`).
-3. **Load**: Populates the Star Schema files (`Dim_Waktu.csv`, `Dim_Universitas.csv`, `Dim_Prodi.csv`, `Fact_Kapasitas_Pendidikan.csv`) and generates a flattened master table (`master_looker_unsil.csv`) tailored for direct ingestion into Looker Studio.
-4. **Automated Data Viz**: Generates and saves analytical charts into the `Outputs/Visualizations/` directory.
+   * Maps each program to its **Fakultas** (e.g., Teknik, Ekonomi) and **Rumpun Ilmu** (Sains/Sosial).
+3. **Load**: Populates the Star Schema files and generates a flattened master table (`master_looker_unsil.csv`) tailored for Looker Studio.
+4. **Automated Data Viz**: Generates and saves analytical charts with dual-threshold DIKTI lines into the `Outputs/Visualizations/` directory.
 
 ### 6. Deployment Phase
-* **Dashboard Deployment**: The flattened data warehouse is linked to Google Looker Studio, providing interactive, filterable dashboards for university leaders (Deans, Vice Rectors, and Quality Assurance Units).
-* **Decisional Value**: Enables proactive recruitment planning by highlighting programs that are dangerously close to or exceeding the DIKTI threshold of `1:45`.
-
----
-
-## 📂 Project Structure
-
-```directory
-.
-├── Data/
-│   ├── Processed/          # Cleaned CSV files (prodi, univ, master looker)
-│   ├── Star_Schema/        # Star Schema Dimensional DW (Fact & Dimension CSVs)
-│   └── Raw/                # Scraped raw data outputs
-├── Notebooks/              # Jupyter Notebooks for exploratory data analysis (EDA)
-├── Outputs/
-│   ├── Visualizations/     # Automatically generated analytics charts (.png)
-│   └── tabel_ranking_prodi.csv # Compliance ranking report per study program
-├── Scripts/                # Helper utilities and modular scripts
-├── Skripsi/                # Academic document drafts, revisions, and reports
-├── run_pipeline.py         # Main execution file for the ETL & Visualization pipeline
-├── scrape_pddikti.py       # Selenium Scraper to collect data from PDDikti portal
-├── CLAUDE.md               # Quick-reference build instructions and guidelines
-├── Revisi Dosen.md         # Advisor review notes & improvement tasks
-└── README.md               # This project documentation file
-```
+* **Dashboard Deployment**: The flattened data warehouse is linked to Google Looker Studio, providing interactive, filterable dashboards.
+* **Faculty-Level Drilldown**: Users can slice and dice data by Faculty and Discipline (Sains/Sosial) to locate structural bottlenecks.
 
 ---
 
@@ -177,18 +100,12 @@ The construction phase is automated via a robust Python ETL pipeline:
 
 ### 1. Clone & Set Up Virtual Environment
 ```bash
-# Clone the repository
 git clone https://github.com/fauzinoorsyabani/Tugas-Akhir.git
 cd "Tugas-Akhir"
-
-# Create a virtual environment
 python -m venv .venv
 
-# Activate the virtual environment
 # On Windows:
 .venv\Scripts\activate
-# On macOS/Linux:
-source .venv/bin/activate
 ```
 
 ### 2. Install Dependencies
@@ -201,57 +118,40 @@ pip install pandas numpy selenium webdriver-manager openpyxl matplotlib seaborn
 ## 🚀 Usage Instructions
 
 ### Step 1: Run the Web Scraper
-The scraper uses Selenium to fetch lecturer and student statistics for Target PTN-BLU Universities. 
-> [!NOTE]
-> Make sure `Data_PTN_BLU_Zona_II_Final.xlsx` is present in your data directory to automatically merge the data.
-
 ```bash
 python scrape_pddikti.py
 ```
-* **Features**: Auto-checkpoint (saves progress per PT so it can resume after crashes), 3x retry mechanism on network timeouts, and auto-merging with Zona II.
-* **Outputs**: `Data_PTN_BLU_Gabungan_Final.xlsx` and `checkpoint_zona_1_3.xlsx`.
 
 ### Step 2: Run the ETL Pipeline & Visualizer
-To extract the processed scraper results, transform them into a Star Schema Data Warehouse, and auto-generate compliance charts, run:
-
+To extract the processed scraper results, transform them, map faculties, and auto-generate compliance charts, run:
 ```bash
-python run_pipeline.py
+python Scripts\run_pipeline.py
 ```
 
 ---
 
 ## 📊 Generated Analytical Outputs
 
-Upon executing `run_pipeline.py`, the system generates premium-designed analytical assets inside `Outputs/Visualizations/`:
+Upon executing the pipeline, the system generates premium analytical assets inside `Outputs/Visualizations/`:
 
-### 1. Institutional Trends (`viz_institusi.png`)
-* A 3-panel line and bar chart showing Universitas Siliwangi's institutional progress across 5 semesters:
-  * Rata-rata Rasio (Average Ratio) with the red DIKTI 1:45 threshold line.
-  * Total Students per Semester.
-  * Total Lecturers per Semester.
-
-### 2. Program Study Heatmap (`heatmap_prodi_semester.png`)
-* A comprehensive, color-coded matrix showing the semester-by-semester ratio progression for every study program. Programs with high ratios are marked in warm shades, allowing deans to spot long-term capacity issues instantly.
-
-### 3. Latest Compliance Ranking (`bar_rasio_prodi_terbaru.png`)
-* A horizontal bar chart presenting ratios for the latest semester. Programs that violate the DIKTI limit (>1:45) are automatically highlighted in **red**, while compliant programs are colored **blue**.
-
-### 4. Dynamic Dashboard Summary (`dashboard_final.png`)
-* An aggregated high-resolution dashboard combining institutional trend lines, student/lecturer bar charts, top 10 highest-ratio study programs, and a matrix heatmap of the top 15 critical study programs.
+1. **Institutional Trends (`viz_institusi.png`)**: A 3-panel line and bar chart showing institutional progress across 5 semesters, featuring dual DIKTI limit lines.
+2. **Program Study Heatmap (`heatmap_prodi_semester.png`)**: A color-coded matrix showing the semester-by-semester ratio progression.
+3. **Latest Compliance Ranking (`bar_rasio_prodi_terbaru.png`)**: A horizontal bar chart presenting ratios for the latest semester. Programs violating their respective DIKTI limits are highlighted in **red** (Extreme) or **orange** (Warning).
+4. **Discipline Comparison (`line_tren_sains_vs_sosial.png`)**: Compares the average burden of Science vs. Social programs against Permendikbud No.3/2020 thresholds.
+5. **Dynamic Dashboard Summary (`dashboard_final.png`)**: An aggregated high-resolution dashboard combining institutional trend lines and matrix heatmaps.
 
 ---
 
 ## ⚖️ Compliance & Decision Support Mechanics (DSS)
 
-The system automatically categorizes and flags study programs based on their calculated capacity ratio. 
+The system automatically categorizes and flags study programs based on their calculated capacity ratio against Permendikbud No.3/2020:
 
-| Ratio Range | Compliance Status | Risk Level | Action Required by Academic Leaders |
-| :--- | :--- | :--- | :--- |
-| **$\le$ 1:35** | Normal / Ideal | 🟢 Low | Keep current capacity. High potential for accreditation upgrade. |
-| **1:36 - 1:45** | Caution | 🟡 Medium | Restrict student intake or prepare to recruit new permanent lecturers. |
-| **> 1:45** | **MELEBIHI BATAS** (Exceeded Limit) | 🔴 High | **Immediate Action Required**: Stop intake, recruit lecturers, or merge sections to comply with DIKTI regulation. |
+| Discipline | Threshold Limit | Action Required if Exceeded |
+| :--- | :--- | :--- |
+| **Sains / Teknologi** | **Maximum 1:30** | Stop student intake, recruit permanent lab lecturers. |
+| **Sosial / Humaniora** | **Maximum 1:45** | Redistribute teaching loads, recruit permanent lecturers. |
 
-The generated `tabel_ranking_prodi.csv` file ranks all programs by risk level, giving university quality assurance boards (*Lembaga Penjaminan Mutu*) a direct prioritization matrix.
+Programs exceeding these thresholds are flagged as **🔴 High Risk** in the data warehouse, giving university quality assurance boards (*Lembaga Penjaminan Mutu*) a direct prioritization matrix.
 
 ---
 
