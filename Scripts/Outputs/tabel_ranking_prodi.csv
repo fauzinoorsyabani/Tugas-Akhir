@@ -1,0 +1,36 @@
+,nama_program_studi,jenjang,akreditasi,total_dosen,jumlah_mahasiswa,nilai_rasio,rasio_fmt,status_dikti
+1,Pendidikan Sejarah,S1,Unggul,11.0,702.0,54.0,1:54.00,MELEBIHI BATAS
+2,Pendidikan Masyarakat,S1,Unggul,12.0,611.0,50.92,1:50.92,MELEBIHI BATAS
+3,Akuntansi,S1,Baik Sekali,27.0,1417.0,45.71,1:45.71,MELEBIHI BATAS
+4,Ilmu Politik,S1,Unggul,21.0,923.0,43.95,1:43.95,Normal
+5,Pendidikan Ekonomi,S1,Unggul,16.0,633.0,42.2,1:42.20,Normal
+6,Ekonomi Pembangunan,S1,Baik Sekali,26.0,1375.0,39.29,1:39.29,Normal
+7,Ekonomi Syari'ah,S1,B,17.0,809.0,38.52,1:38.52,Normal
+8,Kesehatan Masyarakat,S1,-,23.0,795.0,37.86,1:37.86,Normal
+9,Pendidikan Bahasa Indonesia,S1,Unggul,17.0,789.0,37.57,1:37.57,Normal
+10,Informatika,S1,Baik Sekali,24.0,941.0,33.61,1:33.61,Normal
+11,Manajemen,S2,Baik Sekali,17.5,986.5,32.32,1:32.32,Normal
+12,Gizi,S1,Baik Sekali,18.0,606.0,31.89,1:31.89,Normal
+13,Pendidikan Bahasa Inggris,S1,Unggul,26.0,866.0,30.93,1:30.93,Normal
+14,Pendidikan Fisika,S1,Unggul,12.0,446.0,29.73,1:29.73,Normal
+15,Teknik Sipil,S1,Baik,27.0,599.0,28.52,1:28.52,Normal
+16,Pendidikan Biologi,S1,Unggul,8.0,679.0,28.29,1:28.29,Normal
+17,Perbankan dan Keuangan,D3,B,14.0,630.0,27.39,1:27.39,Normal
+18,Teknik Elektro,S1,Baik Sekali,18.0,466.0,24.53,1:24.53,Normal
+19,Pendidikan Geografi,S2,Baik Sekali,7.5,327.5,23.205000000000002,1:23.21,Normal
+20,Pendidikan Jasmani,S1,Unggul,16.5,766.0,23.015,1:23.02,Normal
+21,Sistem Informasi,S1,Baik Sekali,8.0,363.0,17.29,1:17.29,Normal
+22,Pendidikan Matematika,S2,Baik Sekali,12.0,376.0,14.245000000000001,1:14.25,Normal
+23,Manajemen Mutu Halal,S1,Terakreditasi Sementara,8.0,111.0,11.1,1:11.10,Normal
+24,Agribisnis,S2,Baik Sekali,13.5,422.5,8.795,1:8.79,Normal
+25,Agroteknologi,S1,Baik Sekali,12.5,326.5,8.205,1:8.21,Normal
+26,Perbankan dan Keuangan Digital,D4,Baik,5.0,74.0,6.17,1:6.17,Normal
+27,Teknologi Pangan dan Hasil Pertanian,S1,Terakreditasi,9.0,150.0,5.0,1:5.00,Normal
+28,Pendidikan Ilmu Pengetahuan Alam,S2,Baik,5.0,49.0,3.5,1:3.50,Normal
+29,Ilmu Manajemen,S3,Baik,5.0,17.0,2.13,1:2.13,Normal
+30,Pendidikan,S3,Baik,4.0,13.0,0.93,1:0.93,Normal
+31,Ilmu Pertanian,S3,Terakreditasi Sementara,6.0,6.0,0.67,1:0.67,Normal
+32,Hukum Bisnis,S1,-,5.0,0.0,,1:nan,Normal
+33,Pendidikan Kependudukan & Lingkungan Hidup,S2,-,0.0,0.0,,1:nan,Normal
+34,Pendidikan Profesi Guru,Profesi,Baik Sekali,13.0,3489.0,,1:nan,Normal
+35,Sains Data,S1,Terakreditasi Pertama,5.0,0.0,,1:nan,Normal

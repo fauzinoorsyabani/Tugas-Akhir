@@ -9,17 +9,18 @@ import sys
 import warnings
 warnings.filterwarnings('ignore')
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
-sys.path.insert(0, ROOT)
+ROOT       = os.path.abspath(os.path.dirname(__file__))
+PROJECT    = os.path.abspath(os.path.join(ROOT, '..'))   # satu level ke atas = project root
 
-PATH_PRODI  = os.path.join(ROOT, 'Data', 'Processed', 'unsil_prodi_fresh.csv')
-PATH_UNIV   = os.path.join(ROOT, 'Data', 'Processed', 'unsil_univ_fresh.csv')
-PATH_SCHEMA = os.path.join(ROOT, 'Data', 'Star_Schema')
-PATH_MASTER = os.path.join(ROOT, 'Data', 'Processed', 'master_looker_unsil.csv')
-PATH_VIZ    = os.path.join(ROOT, 'Outputs', 'Visualizations')
+PATH_PRODI  = os.path.join(PROJECT, 'Data', 'Processed', 'unsil_prodi_fresh.csv')
+PATH_UNIV   = os.path.join(PROJECT, 'Data', 'Processed', 'unsil_univ_fresh.csv')
+PATH_SCHEMA = os.path.join(PROJECT, 'Data', 'Star_Schema')
+PATH_MASTER = os.path.join(PROJECT, 'Data', 'Processed', 'master_looker_unsil.csv')
+PATH_VIZ    = os.path.join(PROJECT, 'Outputs', 'Visualizations')
 
 os.makedirs(PATH_SCHEMA, exist_ok=True)
 os.makedirs(PATH_VIZ, exist_ok=True)
+
 
 # ─── EXTRACT ──────────────────────────────────────────────────────────────────
 print("=" * 60)
@@ -209,13 +210,16 @@ p = os.path.join(PATH_VIZ, 'heatmap_prodi_semester.png')
 plt.savefig(p, bbox_inches='tight', dpi=150); plt.close()
 print(f"[SAVED] {p}")
 
-# ── 3. Bar chart prodi terbaru ───────────────────────────────────────────────
+# ── 3. Bar chart prodi terbaru (3-tier: Sains 1:30, Sosial 1:45) ─────────────
 fig, ax = plt.subplots(figsize=(10, max(8, len(df_lat)*0.38)))
-clrs = ['#d62728' if v > 45 else '#1f77b4' for v in df_lat['nilai_rasio']]
-bars = ax.barh(df_lat['nama_program_studi'], df_lat['nilai_rasio'], color=clrs)
-ax.axvline(45, color='red', linestyle='--', linewidth=2, label='Batas Dikti (1:45)')
-ax.set_title(f'Perbandingan Rasio per Prodi — Periode {latest}', fontweight='bold')
-ax.set_xlabel('Nilai Rasio (1:x)'); ax.legend(); ax.grid(alpha=0.3, axis='x')
+clrs = ['#d62728' if v > 45 else '#ff7f0e' if v > 30 else '#1f77b4' for v in df_lat['nilai_rasio']]
+bars = ax.barh(df_lat['nama_program_studi'], df_lat['nilai_rasio'], color=clrs, edgecolor='white')
+ax.axvline(x=45, color='red',    linestyle='--', linewidth=2, label='Batas Sosial/Humaniora (1:45) — Permendikbud No.3/2020')
+ax.axvline(x=30, color='orange', linestyle=':',  linewidth=2, label='Batas Sains/Teknologi (1:30) — Permendikbud No.3/2020')
+ax.set_title(f'Perbandingan Rasio Dosen:Mahasiswa per Prodi\nPeriode {latest}', fontweight='bold')
+ax.set_xlabel('Nilai Rasio (1:x)')
+ax.legend(fontsize=8)
+ax.grid(alpha=0.3, axis='x')
 for bar, v in zip(bars, df_lat['nilai_rasio']): ax.text(v+0.2, bar.get_y()+bar.get_height()/2, f'{v:.1f}', va='center', fontsize=8)
 plt.tight_layout()
 p = os.path.join(PATH_VIZ, 'bar_rasio_prodi_terbaru.png')
